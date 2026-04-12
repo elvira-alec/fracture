@@ -378,21 +378,17 @@ def path3_upnp(iface: str, network, verbose: bool = False) -> bool:
     return False
 
 def _get_wan_ip() -> str:
-    """Try to determine our WAN IP via Tailscale or external service."""
-    try:
-        import subprocess
-        out = subprocess.check_output(
-            ["tailscale", "ip", "-4"], text=True, timeout=3
-        ).strip()
-        if out:
-            return out
-    except Exception:
-        pass
-    try:
-        r = requests.get("https://api.ipify.org", timeout=5)
-        return r.text.strip()
-    except Exception:
-        return "UNKNOWN"
+    """Get real WAN IP from external service (deliberately skips Tailscale)."""
+    for url in ["https://api.ipify.org", "https://ifconfig.me/ip",
+                "https://icanhazip.com"]:
+        try:
+            r = requests.get(url, timeout=5)
+            ip = r.text.strip()
+            if ip:
+                return ip
+        except Exception:
+            continue
+    return "UNKNOWN"
 
 def _probe_port(host: str, port: int, timeout: int = 3) -> bool:
     """Check if a TCP port is open."""
