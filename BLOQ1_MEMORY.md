@@ -259,3 +259,99 @@ Build that first.
 Net: the market EXISTS and the founder has now named it correctly. Risk has moved
 off "is this a good idea" (cleared) onto "can you execute fast + focused + reliable
 enough to capture it before the window closes."
+
+## Strategic verdict v3 — fresh jury (full context, no anchoring) + judge
+
+VERDICT: ~45/55. Viable as a FUNDED FIRST ACT / brand play; unproven and
+structurally strained as a DURABLE business. Both juries agreed: magic/wedge is
+real, incumbents architecturally WON'T ship root-level creation (their
+liability model forbids it), fundable as a crowdfund campaign, hardware is not a
+moat. The fight is spike (viral -> refunds -> shelf-death) vs business (toy
+becomes tool) — unresolved, and the only question that matters.
+
+DECISIVE NEW FINDING (earlier rounds missed this):
+- The Orange Pi CANNOT run frontier agentic coding locally. The flagship
+  "build a website by voice" demo is a VOICE FRONTEND TO ANTHROPIC'S CLOUD API.
+  => "Nothing leaves the device" and "offline" are FALSE for the flagship demo —
+     must correct before any marketing. Scope honestly: local DATA (NAS/Pi-hole/
+     files) stays local; the AI BUILDING is cloud. Offline small LLMs (Llama-class)
+     are possible but nowhere near demo quality — a different, non-overlapping
+     capability. Don't conflate them.
+  => Unit economics = a subscription problem in a hardware costume: recurring
+     per-unit API cost + pricing/policy/deprecation/rate-limit risk on a vendor
+     you don't control, inside a one-time EUR350 sale. Solve openly (see v4 below).
+
+FLIPPER ZERO cuts BOTH ways (founder's best comparable): proves the wonder-object
+market exists (>1M units on vibe+demo virality) BUT succeeded because it was
+cheap (~EUR165), self-contained, reliable, offline, zero recurring cost. BLOQ is
+currently the OPPOSITE on 4 of 5. The cautionary twins (Rabbit R1, Humane Pin =
+viral demo, mass refunds, dead) failed on exactly those axes. Move BLOQ toward
+Flipper's success factors: self-contained, reliable, honestly priced, as cheap as
+possible.
+
+Three things decide spike-vs-business (all in founder's control):
+1. RETENTION: find the ONE job people return to weekly (what killed R1/Humane =
+   wow with no day-30 reason to pick it up). Toy->tool bridge = a specific repeated task.
+2. HONEST ECONOMICS: solve cloud cost/dependency openly + correct offline/privacy claims.
+3. SPEED + RELIABILITY: nail the reliably-astonishing demo, get to market before
+   phones normalize agentic AI. Voice-only w/o screen is a real limit (can't see/
+   verify/edit output) -> lean on TV output; never let the demo flake.
+
+## FINAL POSITIONING + SETUP + PLATFORM (v4 — founder decisions)
+
+POSITIONING (locked): Sell as "the smallest thing that runs full agentic AI /
+Claude Code — a form factor neither a phone nor a laptop gives you." NOT "the
+Claude box." Honest about cloud. This is the truthful, defensible frame.
+
+BYO-SUBSCRIPTION (locked): user brings their own Claude (or other) account/sub.
+=> We do NOT resell inference. Kills the recurring-COGS landmine, the pricing/
+   deprecation risk, and much of the liability in one move. Platform is ours,
+   brain is Anthropic's, user decides if they want it.
+
+AGENT-AGNOSTIC (decision): it's a Linux box — can run Codex, Gemini CLI, Aider,
+open-source agents, "whatever new thing pops up." Strategic value = de-risks the
+vendor-dependency landmine + future-proofs across the model race.
+- TENSION: openness fights polish (same as the pentest call). Resolution:
+  * Ship ONE blessed default agent tuned to perfection (smooth onboarding, tested
+    guides, the jaw-drop demo all target it) — what the mass/wonder buyer gets.
+  * Leave platform OPEN for power users to install other agents = unsupported /
+    best-effort; guides/reproducibility guarantee only holds for the default.
+  * Do NOT headline "runs any agent" (spec-nerd msg, muddies wonder pitch); keep
+    it as the "you're not locked in" reassurance for technical buyers.
+
+SMOOTH SETUP (architecture — user NEVER touches Linux; ship an appliance, not a
+computer; every hard step has a proven consumer pattern):
+1. Power on -> boots straight into the appliance image (Linux user pre-created,
+   autologin, agent as boot service; user never sees a terminal). Per-device
+   uniqueness generated on first boot (systemd-firstboot/cloud-init style) so all
+   flashed images are identical + cheap to produce.
+2. WiFi w/o keyboard: box boots into provisioning mode (own AP or BLE); companion
+   phone app hands over home WiFi creds (same as Echo/Sonos/smart bulbs).
+3. Auth w/o keyboard = THE friction point -> DEVICE-CODE FLOW (OAuth 2.0 device
+   authorization grant, like logging a TV into Netflix): box shows short code +
+   URL, user logs into their Claude account on phone + enters code. Once, not
+   repeatedly (refresh tokens). NEVER make them type an API key.
+4. "I'm ready" -> guided first demo ("try saying: build me a website").
+- THE ONE PIECE TO ACTUALLY BUILD/VERIFY: a device-code auth wrapper around Claude
+  Code (its normal login assumes a browser on the same machine; box is headless).
+  Doable + bounded, but confirm Claude Code's current headless/subscription-login
+  support before assuming a mechanism.
+
+OS ARCHITECTURE (recommendation): build on an immutable, A/B-updating OS
+(balenaOS / Mender / RAUC / OSTree-style — cf. SteamOS, Fedora Silverblue).
+- SELF-UPDATE / fleet OTA (answers "upgrade security/compatibility/startup on
+  existing devices"): atomic signed updates to an inactive slot + auto-rollback on
+  failed health check => never brick a device (worst case = stayed on old version).
+- THREE LAYERS at different speeds:
+  1. Base OS — rare, atomic, signed OTA (security/kernel/auth+startup plumbing).
+  2. Agent + tooling — containerized, updated more freely.
+  3. Hosted build-guides — updated SERVER-SIDE => MOST behavioral improvements
+     ship with ZERO firmware push (devices read new guide next run). This is the
+     "guides as control plane" = the maintained-outcome moat vs a case-seller.
+- Update-signing key stays OFF-device (server-side) => even the on-board ROOT
+  agent (or a compromise) can't forge a valid OS update. Update channel = a trust
+  boundary the agent can't cross.
+- Separate persistent DATA partition from replaceable OS => updates can't touch
+  user files (also half the data-loss safety story).
+- Staged rollouts (canary -> % ramp + kill switch) so a bad update never hits the
+  whole fleet at once.
