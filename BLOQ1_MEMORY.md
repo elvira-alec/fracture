@@ -355,3 +355,42 @@ OS ARCHITECTURE (recommendation): build on an immutable, A/B-updating OS
   user files (also half the data-loss safety story).
 - Staged rollouts (canary -> % ramp + kill switch) so a bad update never hits the
   whole fleet at once.
+
+## vs a cheap ~EUR150 N100 mini PC (the sharpest "why not DIY" — more compute, can run same cloud agent)
+
+KEY: the mini PC comparison PROVES compute was never the product. It's the
+compute-flattering disguise of the original "why more than a case/box?" question.
+Same answer: mini PC = bare box (DIY path); BLOQ = finished appliance (outcome).
+
+STOP competing on compute — it's a trap the founder keeps setting for himself:
+- Kill the sentence "pay EUR200 more for less compute." Nobody calls an Echo "a
+  worse mini PC" — different category.
+- For the actual workload (voice frontend to a CLOUD agent + local data services
+  NAS/Pi-hole), the A733 + 12GB is MORE than enough. Not compute-bound. The N100's
+  extra power is WASTED headroom here. "Less compute" is a non-issue.
+
+What actually separates BLOQ (founder's own list, validated + sharpened):
+1. VOICE-NATIVE. Mini PC has no mic/speaker/far-field/wake stack. To make an N100
+   a kitchen assistant you'd bolt all that on = rebuild BLOQ. For ambient/voice
+   use the mini PC isn't a competitor, it's a headless server you SSH into.
+2. KITCHEN POINT = strongest, not a throwaway. Can't put a mini PC on the counter
+   as an Alexa: wrong shape, needs monitor+keyboard to set up, thick cables, fan,
+   boots to a desktop. BLOQ is fanless, silent, tiny, phone-charger powered,
+   BELONGS in a living space. Same reason Echo/HomePod exist vs "use a mini PC."
+   Category difference, and it's real.
+3. BATTERY/LOW-POWER = real but frame right: less "carry it unplugged" (niche),
+   more "no fat brick, silent, ~1-3W, survives a power blip, moves room to room."
+   Electricity saving vs 24/7 N100 is real but modest (~EUR10-30/yr) = nice-to-have,
+   not a headline. Sell the SILENCE/size/single-thin-cable, not the power bill.
+
+HONEST BAR (same as always): these are a PRODUCT + CATEGORY difference, NOT a moat.
+The EUR200 premium is an integration/EXPERIENCE premium — legitimate + proven
+(Echo/Sonos/Apple all charge far above parts cost) BUT only justified if the
+finished experience is genuinely excellent. If it's flaky/clunky, the technical
+buyer is CORRECT to buy the EUR150 box. => the mini PC raises no new problem; it
+raises the same bar as everything else: the appliance experience must be
+excellent or the premium isn't earned.
+
+Win it by fighting on: finished, silent, voice-native, self-maintaining appliance
+that belongs in a home (where the mini PC can't follow without becoming BLOQ) —
+NOT on compute (where you lose and where it doesn't matter).
