@@ -185,3 +185,77 @@ hardware; it STOPS holding the moment the product is a reliably maintained
 outcome over time. That's defensible — but narrower, more service-shaped, and
 less fun to pitch than the everything-box. The thing that makes it fundable is
 the same thing that makes it less exciting to demo.
+
+## Strategic verdict v2 — after founder rebuttals (jury re-run + judge)
+
+Founder rebuttals that were weighed: physical mic button (not always-listening);
+Flipper Zero was allowed on Kickstarter (~$4.8M, 2020) so "crowdfunding bans
+hacking tools" is overstated; concedes NAS to incumbents; proudest differentiator
+= "portable assistant that DESIGNS + HOSTS a whole website from scratch by
+voice," + wireless control + output to smart TV; data-loss engineered out via
+RISC-V black-box log + dual-SSD / in-drive snapshots + plug-in expansion-SSD
+duplicates + revertible changes; keep BASIC pentest as no-hassle portable option;
+hardware-value math (few Orange Pi cases; equiv-spec RPi ~3x price; existing
+cases ignore HATs/batteries/accessories so DIYer must design an enclosure anyway).
+
+VERDICT MOVED: ~65/35 AGAINST → ~50/50. Genuine improvement.
+
+Settled (both juries agree):
+- Mic button: valid but table-stakes (Echo/HomePod have mute too). Ship, don't headline.
+- Drop NAS as battleground; personal-cloud = a use case, not the pitch.
+- Pentest: KEEP but NEVER lead. A root-access general-purpose Linux box reads far
+  more dual-use than a single-purpose RF toy; Flipper hit Amazon delisting +
+  threatened Canada ban + payment friction AFTER the raise. Ship as unsupported
+  community package, not a marketed pillar. Negative-EV to headline.
+- Data-loss engineering: necessary + right, but table-stakes, not a moat.
+- Hardware-value math: STRONGEST honest argument. Real price/value floor even for
+  a buyer who never touches the AI. Keep front and center.
+- The real risk is RELIABILITY, not strategy. "Fund the demo before the enclosure."
+
+The one disagreement + judge ruling (website differentiator):
+- "Host a website by voice" as a USE CASE is weak (CGNAT/dynamic IP/battery-dies;
+  Vercel/Netlify/Squarespace beat it on every axis). Bear wins that literally.
+- BUT the website is the PROOF, not the product: it demonstrates open-ended,
+  root-level CREATION, which no closed assistant (Alexa/Google/HomePod intent
+  sandboxes) can do. That capability is the genuinely un-copyable-by-incumbents
+  wedge. Reframe: "pocket AI builder — talk to it, it builds/hosts real software
+  from scratch, and nothing you say leaves the device." Website = jaw-drop demo;
+  the JOB = digital sovereignty made operable by a non-expert. Create on device,
+  host elsewhere (kills the hosting objection).
+- NON-NEGOTIABLE NEXT STEP: prototype the voice->it-builds-something-real demo on
+  the bare board FIRST. Resolves more risk than any strategy doc.
+
+## KEY THESIS — awareness arbitrage / consumer-magic (founder's best frame)
+
+This is the most important reframe of the whole analysis. BLOQ is NOT a spec-war
+utility product; it's a WONDER product selling ACCESS to a capability that already
+exists but is locked behind technical setup (VS Code, Claude Code, API keys,
+terminal) that ~99% of people will never climb. "People my age at work don't know
+what Claude is" = the entire opportunity. Buyer is aspirational/emotional ("this
+breaks my mind, I'd buy one"), which is exactly who funds crowdfunding — this
+answers the bear's "no clear buyer." Founder is the buyer: wants it as toy AND
+serious work machine — that duality (enthusiasts buy for wonder, a subset stay for
+real work) is the strongest retention signal so far.
+
+Two risks the wonder thesis INTRODUCES (now the real enemies, not Synology/Flipper):
+1. CLOSING WINDOW / a clock. The reason nobody knows AI can do this is temporary —
+   Apple/Google/Amazon are shipping agentic AI into devices people already own
+   (~18-36mo). The awareness gap is a moat with an expiry. => SPEED is now the #1
+   asset; win as a fast-moving cult/community brand + first-mover, before the
+   giants normalize it. It's a race, not a durable moat.
+2. FEATURE SPRAWL = wonder-killer. Offline survival LLMs, emergency signal
+   scan/broadcast, antennas, etc. are each cool but collectively turn "this ONE
+   thing will blow your mind" into a forgettable 9-thing list. Pick ONE brain-
+   breaking demo (bet: "spoke to a battery box, it built a real website/app in 2
+   min"). Demote the rest to "it can also." The off-grid/emergency/offline-LLM
+   angle is strong enough to be its OWN product (prepper market pays) — LATER,
+   not bolted on now.
+
+Non-negotiable (unchanged): wonder is fragile — a flaky demo destroys it faster
+than a great one builds it. Everything routes through: can the voice-driven agent
+reliably produce something genuinely impressive EVERY time on the bare board?
+Build that first.
+
+Net: the market EXISTS and the founder has now named it correctly. Risk has moved
+off "is this a good idea" (cleared) onto "can you execute fast + focused + reliable
+enough to capture it before the window closes."
