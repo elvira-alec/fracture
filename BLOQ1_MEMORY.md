@@ -394,3 +394,56 @@ excellent or the premium isn't earned.
 Win it by fighting on: finished, silent, voice-native, self-maintaining appliance
 that belongs in a home (where the mini PC can't follow without becoming BLOQ) —
 NOT on compute (where you lose and where it doesn't matter).
+
+## RESOLVED POSITIONING — "Finished. Supported. Yours." (three legs)
+
+The answer to "more than a case company" = a built package + long-term support +
+easy user jailbreak. Three legs, each kills a different objection:
+1. FINISHED (built package) — vs case-seller/mini-PC: integrated, voice-native,
+   works out of the box; not a bare board you assemble.
+2. SUPPORTED (long-term) — the durable value a case-seller structurally can't
+   offer: maintained outcome via guides-as-control-plane + OTA + data-loss safety.
+   Closest thing to a moat (not unbreakable, but real ongoing value).
+3. YOURS (easy jailbreak) — flips "it's just a Linux box, no moat" into a FEATURE:
+   "you actually own this one, unlike your phone/Alexa — unlock it, do anything."
+   Flipper/Raspberry-Pi ethos; resonates with the maker/prosumer early buyer.
+
+SHARPENING (locked): make leg 3 a TWO-MODE design with a REVERSIBLE switch
+(resolves the openness-vs-polish tension + the judge's "serves neither buyer" hit):
+- APPLIANCE MODE (default): supported, safe, OTA-managed, guides-driven,
+  reversible, warranty applies.
+- UNLOCKED MODE (opt-in, one toggle): full root freedom, best-effort/community
+  support only, "you're on your own"; FACTORY RESET always restores supported
+  appliance state.
+- Precedent: Steam Deck (game vs desktop mode, resettable); Android unlockable
+  bootloader. Serves BOTH buyers fully; nobody trapped in the wrong mode.
+
+What this framing settles:
+- SCOPES SUPPORT: warranty/support = appliance mode only; unlocked = your
+  adventure. Caps the unbounded-support-burden risk.
+- CLEAN HOME FOR PENTESTING: don't ship/market it (keeps brand + liability clean),
+  but unlocked mode means a user CAN install it themselves. "You can do anything
+  with it" stays true without advertising a hacking tool.
+
+CAVEAT (keep live): strong REASON TO BUY + strengthens ENTHUSIAST retention (for
+makers, tinkering itself = the repeat use = the day-30 stickiness Rabbit/Humane
+lacked). Locks in the beachhead. Does NOT yet give the MASS "wonder" buyer a
+repeat job — retention question stays open for the broader audience.
+
+## FINAL INDEPENDENT VERDICT (3rd-agent judge, not the session)
+
+~35/65 AGAINST as a durable business; ~60/40 FOR as a one-shot crowdfunded launch.
+Two different bets — conflating them is the trap. Decisive point: Flipper retained
+because self-contained/offline/reliable/no-recurring-cost; BLOQ is the inverse, so
+Flipper indicts rather than validates. BYO-subscription judged the strongest
+pro-move (removes the Rabbit/Humane P&L bleed). "Guides-as-moat" judged the
+weakest pro-claim (copyable; not a real moat). THE decider: post-demo RETENTION —
+does voice-driven root "build from scratch" become a returned-to workflow or a
+drawer gadget? Hinges on (a) reliability every time, (b) whether a screenless
+build/verify loop is repeatable. Founder's hardest truth: "You're building a
+crowdfundable DEMO, not yet a defensible COMPANY; you own no part of the stack you
+rent your killer feature from, into a window incumbents close in 18-36 months.
+Not fatal IF named: run the campaign as a paid demand TEST; judge yourself on
+whether batch 2 and 3 arrive for UTILITY, not virality; articulate the repeat use
+case that survives your phone getting the same feature free — or it's a project
+you love, not a business."
