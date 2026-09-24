@@ -447,3 +447,115 @@ Not fatal IF named: run the campaign as a paid demand TEST; judge yourself on
 whether batch 2 and 3 arrive for UTILITY, not virality; articulate the repeat use
 case that survives your phone getting the same feature free — or it's a project
 you love, not a business."
+
+## EXPANSION IDEA — "tuner brand for boards" (jury + judge)
+
+Idea: after BLOQ 1, become a leader brand that packages OTHER boards into finished
+supported platforms; support many boards, eventually flagships. Founder's meaning
+of "Brabus/AMG" = take an existing product, package + polish + resell (NOT extra
+performance) — that meaning WAS understood; it's a legit model (Umbrel/Start9/Nabu
+Casa do exactly it).
+VERDICT (3rd-agent judge): ~35/65 AGAINST the many-board vision; ~70/30 FOR a
+narrowed version. "Founder is pitching a platform; the facts describe a product."
+- DECIDER: board-count discipline vs support-cost compounding. Per-board
+  maintenance scales super-linearly (Armbian = a beloved FREE project chronically
+  under-resourced doing exactly this); a paid brand inherits that + SLAs/RMA/tickets
+  on thin margins. "Support many boards" is where unit economics die.
+- Do: win ONE board completely, earn a multi-year support/trust reputation, prove
+  subscription attach FIRST; add a 2nd flagship board only from surplus. Breadth is
+  a reward, never a launch strategy.
+COMPETITOR LANDSCAPE (real, this space is NOT empty): Umbrel Home $549; Start9
+Server One $899; Home Assistant Green ~$99 + Nabu Casa subscription (the leading
+"open-source brand -> appliance + recurring" model, entrenched/funded); balenaOS
+(commercial multi-board fleet OS); Armbian (free multi-board, stretched);
+Batocera/RetroPie (multi-board, one niche). Framework/System76 = premium open-hw
+brands but build their OWN hardware. SBC market ~$3.1-4.5B (2026), CAGR ~4-10%,
+MOSTLY industrial; consumer self-hosting slice is small.
+BRANDING (decision): DON'T brand as a tuner/Brabus — the packaging MODEL is fine,
+but polish alone is NOT a moat (anyone flashes the same image onto the same board;
+Brabus's defensibility = heritage + physical exclusivity, neither transfers).
+Reference brands = Framework / Nabu Casa / Teenage Engineering (ownership, finished,
+design-led), NOT Brabus. Tuner energy lives in community TONE, not the promise.
+The moat = what CAN'T be flashed onto a blank board: multi-year support track
+record + trust + subscription relationship.
+
+## BUSINESS-MODEL / HARDWARE DECISIONS (recent, locked-ish)
+
+- DROP the cloud subscription for now — founder couldn't articulate its value; don't
+  fake one. Consequence: no recurring revenue = modest hardware-margin business (per
+  juries). Lighter options for LATER only if demand shows: bake "X years support"
+  into price, or a remote-access/backup tier once customers ask. Don't build spec-ly.
+- MJF-printed cases ~EUR25, factored into price => ZERO tooling capex (no EUR10-30k
+  injection mold). Trade-off: MJF stays ~EUR25/unit at any volume; injection is
+  cheap per-part (~EUR2-5) only after high volume. MJF right for launch/low-mid vol.
+- CERTS still required even with off-the-shelf parts: CE marks are PER-PRODUCT, not
+  transferable — combining certified parts into a new branded product makes YOU the
+  manufacturer of a new product needing its own Declaration of Conformity. The two
+  things that pull you in: (1) WiFi/BT radio -> Radio Equipment Directive (mitigate
+  with a PRE-CERTIFIED radio module -> mostly self-declaration), (2) lithium battery
+  -> safety + UN38.3 shipping test. Plus GPSR (EU consumer-product safety, 2024).
+  PC builders mostly skip re-cert because they add no battery/new radio + one-offs;
+  you're mass-producing a branded radio+battery product. Cost reducible (pre-cert
+  module + standard battery pack), not zero. Confirm scope with a compliance
+  consultant for ~1 hour before shipping. NOT legal advice.
+- BATTERY decision: KEEP it if portability is core to the vision — it's the ONE axis
+  a mini PC can NEVER match (mains-tethered box can't go anywhere). Cert cost is
+  reducible; don't amputate the vision to dodge a manageable cost. DROP to USB-C
+  (wall or any power bank) only if BLOQ is really a plugged-in appliance — cleaner,
+  cheaper, less cert, still beats mini PC on experience. Cert tail should follow the
+  product vision, not amputate it.
+
+## GO / NO-GO (personal, founder goal = get rich / escape 9-5)
+
+- YES chase it — but as a CHEAP VALIDATION SPRINT that could become a business, NOT
+  as the ticket out of the 9-5. Keep the day job; downside = spare time + a few
+  hundred EUR; upside = real product + skills + audience + reputation + reinvestment
+  capital. Launchpad > destination: almost nobody escapes on their FIRST product;
+  they escape on what it BUILDS (audience, proof, capital for the next bigger thing).
+- Founder pushback (valid + conceded): EUR170k (2k-unit good case) is a real, big
+  first-project outcome + CV/rep + seed capital for the next thing. Even 500 units
+  (~EUR175k gross / ~EUR50k contribution) is real money, NOT a EUR5 product — a
+  genuinely good first result. BUT EUR170k is the GOOD case, not the assumption;
+  it's gated on demand not yet tested; it's a one-time windfall, not annual income.
+
+## SALES-REALISM JURY (how realistic are 500 / 2,000 / 10,000 units?)
+
+Base rates (facts): tech/hardware funds ~low-20s% success (hard category); #1
+failure = no market/consumer interest; crowdfunding "no longer a PMF signal, very
+niche"; success needs an audience built BEFORE launch (~1,000 true fans), ~30% of
+goal in first 48h from your OWN list; tech median pledge ~$194, most common $25-49;
+post-campaign hype-fade common. Flipper >1M @ ~EUR165 (cheap/simple/viral); Rabbit
+R1/Humane big raw numbers + brutal refunds; Umbrel/Start9/HA sell at price on
+established communities. EUR350 = considered purchase (~2x Flipper).
+BOTH JURORS AGREED:
+- 500 units (~EUR175k): REACHABLE but CONDITIONAL — the realistic ceiling, not a
+  free floor. Needs a pre-launch list ~5-8k emails @ ~7-10% conversion built over
+  6-9 months + ONE demo video that genuinely spreads. Without that pre-work, likely
+  reality is 100-200. My odds: ~50%+ IF the audience+demo work is done, low if not.
+- 2,000 units (~EUR700k): STRETCH / top-decile (~15-25%). Needs a real viral moment
+  + press + proven-reliable demo + a genuine channel (10k+ following, 15-25k list).
+- 10,000 units (~EUR3.5M): REJECTED (<5%) — Rabbit-scale black swan, can't plan for.
+CRUX + REFRAME: sales are DOWNSTREAM of the audience built before launch (currently
+zero). The real deliverable is NOT "sell 500 units" — it's "build ~5,000 true fans
++ one bulletproof demo"; the units follow. So the plan tightens to: DON'T build the
+product first — build the AUDIENCE + DEMO first; post the demo, grow the list, watch
+if ~30% of a target funds in 48h from your own people. That produces the 500 AND
+tells you if 2,000 is in reach — before committing to a production run.
+
+## OMARCHY (can BLOQ run it?) — researched
+
+Omarchy = DHH's opinionated Arch + Hyprland x86_64 DESKTOP distro (Basecamp);
+"agentic" = AI helps you build plugins / diagnose crashes / reshape the DESKTOP.
+Verdict for BLOQ: NOT a fit as the base OS.
+1. WRONG ARCH: official Omarchy is x86_64-ONLY; the A733 is ARM/aarch64. Only
+   unofficial community ARM forks (ARMarchy, Kinney's fork) exist = fragile,
+   unsupported = the exact per-board-support fragility to avoid for a reliable appliance.
+2. WRONG SHAPE: it's a graphical developer WORKSTATION (tiling WM, terminal, editor,
+   LUKS FDE) for someone at a laptop. BLOQ is a HEADLESS, voice-first, ships-empty
+   appliance. A full Hyprland desktop is not what a screenless counter device wants.
+3. "Agentic" here = AI customizes your desktop, NOT "root agent builds/runs software
+   by voice." Different premise.
+USE: keep the immutable ARM appliance base OS (balenaOS/OSTree-style) as the default.
+Omarchy is a good SPIRITUAL reference (opinionated, works-out-of-box, curated ethos)
+and a possible UNLOCKED-MODE desktop option for a tinkerer who attaches a monitor.
+DHH's audience (Rails/indie/AI) overlaps the buyer — worth watching for positioning.
