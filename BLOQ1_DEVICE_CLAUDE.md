@@ -33,7 +33,14 @@ positioned to be able to run on battery/small-solar through a grid outage.
 - **Power:** Xpart UPS module + 4-cell 18650 holder, 4× Samsung INR18650-35E.
 - **Cooling:** case-integrated fan(s). **Fan wiring (confirmed): 5V → GPIO
   pin 4, GND → GPIO pin 6.** No PWM wire used (2-wire fan).
-- **Audio:** class-D amp + speaker (from parts bundle).
+- **Audio:** class-D amp + speaker (from parts bundle), fed from the board's
+  **own built-in 3.5mm audio jack (I/O)** — confirmed via official spec: the
+  4 Pro has a genuine onboard single microphone, single speaker output, and
+  3.5mm jack supporting input/output. Unlike LITE, no USB audio codec
+  workaround is needed here.
+- **External pentesting WiFi:** Alfa AWUS036H (owned) — confirmed this is
+  the BLOQ 1 adapter, not LITE's. The 4 Pro has more USB headroom than the
+  Zero 3W, so no bus-contention concern here (resolves prior open item).
 - **RTC:** coin cell + holder (pending purchase).
 - **Storage:** NVMe boot — **status pending test** (no NVMe drive on hand yet
   as of last check). Fallback plan: boot from eMMC/microSD, use NVMe for data
@@ -70,8 +77,12 @@ flagging so it isn't silently assumed present.
   USB data bus).
 - **Expansion bus:** the 40-pin GPIO header (GPIO/UART/I2C/SPI/PWM) is the
   *real* expansion interface — this is where CC1101, PN532, and GPS actually
-  connect (SPI/I2C/UART), not USB. The USB bus is reserved for CM108 audio
-  (see below) unless freed up later via a working I2S overlay.
+  connect (SPI/I2C/UART), not USB.
+- **USB bus contention — RESOLVED:** a mini USB hub (CH334-based, ~€2-5) has
+  been added to split the board's one data port so CM108 audio and any other
+  USB accessory can coexist. This closes the earlier open question about
+  what happens when audio and an external USB device both want the single
+  bus.
 - **Power:** single 18650 cell, bare TP4056 (charge) + MT3608 (boost to 5V)
   modules, separate battery clip (not an integrated holder — avoids burying
   the charge port). **MT3608 trim pot must be calibrated to 5.0–5.1V with a
@@ -99,16 +110,26 @@ flagging so it isn't silently assumed present.
 - **Haptics:** vibration motor + 3-pin driver board — dual use: general
   haptic feedback, and the confirmation pulse for capacitive button presses
   (toggleable in settings).
-- **Display:** e-ink, 48×23mm rectangular.
-- **Input:** capacitive touch buttons (TTP223-style), flush-mounted in the
-  case wall, no moving parts, 1 GPIO pin + GND each. Vibration motor confirms
-  each touch (no physical click feedback).
+- **Display:** e-ink, 48×23mm rectangular — shows battery, connectivity, and
+  mic state. Draws power only when it refreshes (e-ink's usual low-power
+  trait), consistent with LITE's overall power-conscious design.
+- **Input:** buttons — **flagged inconsistency:** earlier spec was capacitive
+  touch (TTP223-style, no moving parts, vibration motor confirms touch since
+  there's no physical click). Latest description says "owned, tactile
+  switches repurposed," which are mechanical and *do* have physical click
+  feedback — the two descriptions describe genuinely different components
+  with different feel. Pick one explicitly: true capacitive (buy TTP223
+  modules) or repurposed tactile switches (what's already on hand, skip the
+  capacitive purchase, and the vibration-confirms-touch rationale becomes
+  unnecessary since tactile switches already click).
 - **NFC/RFID:** PN532 (Elechouse) — read/write/basic emulation, 13.56MHz.
 - **GPS:** GY-GPS6MV2/NEO-6M — for logging and war-driving.
 - **Sub-GHz:** CC1101, 433MHz — chosen over SX1276/78 specifically for
   documented garage-door/car-fob capture-replay examples. Note: SX1278
   can't reach 868MHz; SX1276 could but needs two separate antenna-matched
   modules for full 433+868 coverage, judged not worth it for v1.
+  **Validated: confirmed workable in practice against the owner's own
+  gate** — this is a real, tested capability, not just a spec claim.
 - **Case:** MJF, 85×63×21mm. Board+battery side-by-side (~52mm width);
   small-components (speaker/amp/codec/mic/vibe/fan/CC1101) as an end-cap
   extending length, not stacked over the board — keeps depth to the
@@ -158,12 +179,19 @@ possibly BLOQ 1 pending the PN532 decision above):**
 - Sub-GHz capture/replay (CC1101 on LITE) — garage door remotes, car fobs.
 - GPS logging / war-driving.
 - **Detection mode** — passive WiFi/Bluetooth scanning (no monitor mode
-  required) to flag nearby skimmers, trackers, or rogue access points, with
-  you explaining findings to the owner in plain language. This is the
-  protective/defensive framing of the RF hardware and is the one meant to be
-  surfaced in marketing — the raw monitor-mode/injection/capture-replay
-  capabilities exist but are not the headline and should stay in
-  **unlocked mode** only, not the default supported-appliance experience.
+  required) to flag nearby skimmers, trackers, or rogue access points. The
+  explicit design intent (confirmed): findings are **reasoned about and
+  explained by you in plain language, not surfaced as a raw/unexplained
+  alert.** This is the protective/defensive framing of the RF hardware and
+  is the one meant to be surfaced in marketing — the raw monitor-mode/
+  injection/capture-replay capabilities exist but are not the headline and
+  should stay in **unlocked mode** only, not the default supported-appliance
+  experience.
+- **On LITE specifically, day-to-day use is screen/button-first, not
+  voice-first:** the owner glances at the e-ink for status, uses the touch
+  buttons for quick actions, and falls back to their phone's SSH/dictation
+  only when a real spoken instruction is needed — LITE was never meant to
+  carry its own always-on voice pipeline the way BLOQ 1 does.
 
 **Management/ops behavior expected of you specifically:**
 - Support **multiple concurrent Claude Code sessions**, manageable by voice —
@@ -206,17 +234,31 @@ possibly BLOQ 1 pending the PN532 decision above):**
      conscious decision if this is really what's wanted, not a default.
    **Do not build without resolving which of these it is.**
 
-2. **PN532/NFC on BLOQ 1 flagship** — requested in the merged utility spec,
-   not currently in the flagship BOM. Needs a purchase/scope decision.
+2. **PN532/NFC on BLOQ 1 flagship — STILL OPEN.** Requested in the merged
+   utility spec; still absent from the latest, most detailed BLOQ 1
+   component table. If flagship NFC is really wanted, it needs an explicit
+   purchase line — it has not silently appeared on its own.
 
-3. **External WiFi adapter (Alfa) port assignment** — which physical port on
-   which board this is meant to use hasn't been pinned down against the
-   actual confirmed port counts in this document. Resolve before assuming
-   it's available alongside everything else that wants a USB bus.
+3. ~~External WiFi adapter (Alfa) port assignment~~ — **RESOLVED.** Confirmed
+   the Alfa AWUS036H is BLOQ 1's adapter, not LITE's, and the 4 Pro has
+   enough USB headroom that this isn't a contention concern.
 
 4. **Two fans on LITE** — confirmed as bought, but flagged earlier as
    possibly excessive bulk/noise/grille-holes for a pocketable device. Worth
    a deliberate yes/no before finalizing the case.
+
+5. **LITE button type — see the flagged inconsistency in LITE's Hardware
+   Inventory above (capacitive TTP223 vs repurposed tactile switches).**
+   Pick one; they're different parts with different feel and the
+   vibration-feedback rationale only makes sense for one of them.
+
+6. **Retail pricing conflict.** Two different LITE retail figures exist in
+   the current numbers: "~€329" quoted alongside BLOQ 1's own pricing line,
+   versus "~€300" computed directly from LITE's own €196.60 subtotal at
+   ~34% margin. The €300 figure is the one with an actual cost basis shown;
+   the €329 figure looks like it may be stale/leftover from an earlier pass.
+   Confirm which is the real Kickstarter-facing number before it goes
+   anywhere public.
 
 ## LEGAL/BRANDING NOTES (brief — full detail lives in project memory, not
 repeated here since it's not operationally relevant to you as the on-device
